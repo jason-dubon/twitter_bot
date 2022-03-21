@@ -44,7 +44,7 @@ def send_tweets(trending):
             hastags += f"{i} "
         if len(video) + len(hastags) >= 250:
             break
-            # tweet = client.create_tweet(text=f"{video} {hastags}")
+    # tweet = client.create_tweet(text=f"{video} {hastags}")
     print(f"{video} {hastags}")
 
 

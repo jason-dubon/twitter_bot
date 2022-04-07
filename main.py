@@ -24,12 +24,10 @@ def get_trends():
     count = 0
     for i in trends[0].get("trends"):
         count += 1
-        # print(f"{count}. {i.get('name')} with {i.get('tweet_volume')} tweets")                   
+        # print(f"{count}. {i.get('name')} with {i.get('tweet_volume')} tweets")
         coinflip = randint(0, 1)
-        # print(coinflip)                                                                          
-        if coinflip == 1:
+        if coinflip == 1: # this randomly assigns trending tags that will be used for our tweet
             trends_list.append(i.get('name'))
-    print(trends_list)
     return trends_list
 
 
@@ -44,7 +42,7 @@ def send_tweets(trending):
             hastags += f"{i} "
         if len(video) + len(hastags) >= 250:
             break
-    # tweet = client.create_tweet(text=f"{video} {hastags}")
+    tweet = client.create_tweet(text=f"{video} {hastags}")
     print(f"{video} {hastags}")
 
 

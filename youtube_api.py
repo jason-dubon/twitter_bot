@@ -8,28 +8,20 @@ api_key = 'XXXX'
 def get_video():
     youtube = build('youtube','v3',developerKey = api_key)
 
-    test = youtube.channels().list(
-        part='contentDetails',
-        id='XXXX'
-    )
 
     videos = youtube.playlistItems().list(
         part='snippet',
-        playlistId='XXX',
+        playlistId='XXX', # getting the playlistID for the channel is super important to access all the videos from a specific cahnnel
         maxResults=12
     )
 
     my_data = videos.execute()
 
-    #print(test.execute())
 
     data_list = my_data['items']
     video_id = data_list[0].get("snippet").get("resourceId").get('videoId')
     video_url = f"https://www.youtube.com/watch?v={video_id}"
 
-    #print(data_list[0].get("snippet").get('title'))
-    #print(video_id)
-    #print(video_url)
 
     all_video_urls = []
 
